@@ -30,7 +30,7 @@ function PromoPage() {
   const [selectedFilter, setSelectedFilter] = useState('all') // 'all' or 'unread'
 
   return (
-    <div className="page max-w-[500px] mx-auto p-4">
+    <div className="page w-[400px] mx-auto p-4">
       {/* Filter Section */}
       <div className="py-2 flex items-center justify-between pb-2 mb-4">
         <p
@@ -40,10 +40,10 @@ function PromoPage() {
           Semua Notifikasi
         </p>
         <button
-          className="text-[12px] font-light leading-[22px]"
+          className="text-[12px] font-light leading-[20px]"
           style={{
             color: 'var(--Warna-Utama, #51D7B1)',
-            letterSpacing: '-0.276px',
+            letterSpacing: '-0.2px',
             fontFamily: 'Nunito',
           }}
         >
@@ -56,14 +56,14 @@ function PromoPage() {
         {notifications.map((notification) => (
           <div
             key={notification.id}
-            className="flex items-center justify-between p-6 mb-4 bg-white shadow rounded-lg"
+            className="flex items-center justify-between p-4 mb-4 bg-white shadow rounded-lg"
           >
             <div className="flex items-center">
               <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
                 {/* Replacing the bell icon */}
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -76,27 +76,17 @@ function PromoPage() {
               </div>
               <div className="ml-4">
                 <p
-                  className="font-bold leading-[26px] text-[15px]"
+                  className="font-bold leading-[20px] text-[13px]"
                   style={{
                     color: 'var(--Light-Text-Color, #1B1E28)',
-                    letterSpacing: '-0.276px',
+                    letterSpacing: '-0.2px',
                     fontFamily: 'Nunito',
                   }}
                 >
                   {notification.title}
                 </p>
-                <p
-                  className="font-bold leading-[18px] text-[12px]"
-                  style={{
-                    color: '#000',
-                    letterSpacing: '-0.184px',
-                    fontFamily: 'Nunito',
-                  }}
-                >
-                  {notification.date}
-                </p>
                 <button
-                  className="text-xs font-semibold leading-[15px]"
+                  className="text-[11px] font-semibold leading-[15px]"
                   style={{
                     color: 'var(--Light-Sub-Text-Color, #7D848D)',
                     letterSpacing: '-0.23px',
@@ -105,11 +95,21 @@ function PromoPage() {
                 >
                   Lihat Selengkapnya
                 </button>
+                <p
+                  className="font-semibold leading-[18px] text-[10px]"
+                  style={{
+                    color: '#000',
+                    letterSpacing: '-0.184px',
+                    fontFamily: 'Nunito',
+                  }}
+                >
+                  {notification.date}
+                </p>
               </div>
             </div>
             <div className="flex flex-col items-end">
               <p
-                className="font-semibold leading-[18px] text-[12px]"
+                className="font-semibold leading-[18px] text-[10px]"
                 style={{
                   color: '#51D7B1',
                   textAlign: 'right',
@@ -120,17 +120,17 @@ function PromoPage() {
                 {notification.time}
               </p>
               <div className="flex flex-col items-end">
-              {!notification.isRead && (
-                <div
-                  className="w-2 h-2 text-white rounded-full flex items-center justify-center"
-                  style={{
-                    backgroundColor: '#51D7B1',
-                    letterSpacing: '-0.276px',
-                    fontSize: '12px',
-                  }}
-                />
-              )}
-            </div>
+                {!notification.isRead && (
+                  <div
+                    className="w-2 h-2 text-white rounded-full flex items-center justify-center"
+                    style={{
+                      backgroundColor: '#51D7B1',
+                      letterSpacing: '-0.276px',
+                      fontSize: '12px',
+                    }}
+                  />
+                )}
+              </div>
             </div>
           </div>
         ))}

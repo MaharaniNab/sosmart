@@ -7,21 +7,21 @@ const notifications = [
     id: 1,
     title: 'Anugrah Shoes',
     time: '17:21',
-    date: 'Baru saja',
+    desc: 'Dapatkan Promo Cashback hanya di Anug...',
     isRead: false,
   },
   {
     id: 2,
     title: 'Nyai Mercon',
     time: '15:15',
-    date: '1 hari yang lalu',
+    desc: 'Dapatkan Promo Cashback hanya di Nyai...',
     isRead: true,
   },
   {
     id: 3,
     title: 'Sultan Basreng',
     time: '15:15',
-    date: '3 hari yang lalu',
+    desc: 'Dapatkan Promo Cashback hanya di Sult...',
     isRead: true,
   },
 ]
@@ -30,7 +30,7 @@ function KeuanganPage() {
   const [selectedFilter, setSelectedFilter] = useState('all') // 'all' or 'unread'
 
   return (
-    <div className="page max-w-[500px] mx-auto p-4">
+    <div className="page w-[400px] mx-auto p-4">
       {/* Filter Section */}
       <div className="py-2 flex items-center justify-between pb-2 mb-4">
         <p
@@ -40,10 +40,10 @@ function KeuanganPage() {
           Semua Notifikasi
         </p>
         <button
-          className="text-[12px] font-light leading-[22px]"
+          className="text-[12px] font-light leading-[20px]"
           style={{
             color: 'var(--Warna-Utama, #51D7B1)',
-            letterSpacing: '-0.276px',
+            letterSpacing: '-0.2px',
             fontFamily: 'Nunito',
           }}
         >
@@ -56,14 +56,14 @@ function KeuanganPage() {
         {notifications.map((notification) => (
           <div
             key={notification.id}
-            className="flex items-center justify-between p-6 mb-4 bg-white shadow rounded-lg"
+            className="flex items-center justify-between p-4 mb-4 bg-white shadow rounded-lg"
           >
             <div className="flex items-center">
               <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
                 {/* Replacing the bell icon */}
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -76,24 +76,14 @@ function KeuanganPage() {
               </div>
               <div className="ml-4">
                 <p
-                  className="font-bold leading-[26px] text-[15px]"
+                  className="font-bold leading-[15px] text-[12px]"
                   style={{
                     color: 'var(--Light-Text-Color, #1B1E28)',
-                    letterSpacing: '-0.276px',
+                    letterSpacing: '-0.2px',
                     fontFamily: 'Nunito',
                   }}
                 >
                   {notification.title}
-                </p>
-                <p
-                  className="font-bold leading-[18px] text-[12px]"
-                  style={{
-                    color: '#000',
-                    letterSpacing: '-0.184px',
-                    fontFamily: 'Nunito',
-                  }}
-                >
-                  {notification.date}
                 </p>
                 <button
                   className="text-xs font-semibold leading-[15px]"
@@ -103,13 +93,13 @@ function KeuanganPage() {
                     fontFamily: 'Nunito',
                   }}
                 >
-                  Lihat Selengkapnya
-                </button>
+                  {notification.desc}
+                  </button>
               </div>
             </div>
             <div className="flex flex-col items-end">
               <p
-                className="font-semibold leading-[18px] text-[12px]"
+                className="font-semibold leading-[18px] text-[10px]"
                 style={{
                   color: '#51D7B1',
                   textAlign: 'right',

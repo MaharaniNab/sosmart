@@ -15,7 +15,7 @@ const UserSettings: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center">
 
-      <div className="max-w-[500px]  w-full mx-auto p-4 border-b-2 border-red-400">
+      <div className="w-[400px] w-full mx-auto p-4 border-b-2 border-red-400">
         {/* Header */}
         <header className="bg-white  border-b-2 border-black shadow">
           <div className="flex  justify-between items-center px-4 py-4">

@@ -85,7 +85,7 @@ const ProductCard = ({
               color: "black",
               fontSize: 9,
               fontFamily: "Nunito",
-              fontWeight: 400,
+              fontWeight: 700,
               lineHeight: "15px",
               wordWrap: "break-word",
             }}

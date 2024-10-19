@@ -1,9 +1,9 @@
 'use client' // Add this to the top of the file
 
 import React, { useState } from 'react'
-import ProductCard from '@/app/homepage/product-card/page'
-import ProductFlashsale from '@/app/homepage/product-flashsale/page'
+import ProductCard from './list-product/page'
 import Link from 'next/link'
+import ProductFlashsale from './product-flashsale/page'
 
 const HomePage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <div className="homepage max-w-[500px] mx-auto">
+    <div className="homepage w-[400px] mx-auto">
       {/* Promo Banner and Search Bar */}
       <div
         className="promo-banner w-full h-[220px] bg-cover bg-center text-white flex flex-col items-center justify-center shadow-lg relative bg-blend-darken"
@@ -36,8 +36,8 @@ const HomePage: React.FC = () => {
           backgroundColor: 'lightgray',
         }}
       >
-        <div className="rounded-md flex justify-between items-center absolute top-5 gap-6 mx-4 mt-0">
-          <div className="flex items-center w-[184px] h-[36px] border rounded-md px-4 bg-white ml-4 shadow-lg">
+        <div className="rounded-md flex justify-between items-center absolute top-5 gap-6 mx-12 mt-0">
+          <div className="flex items-center w-[184px] h-[36px] border rounded-md px-2 bg-white ml-4 shadow-lg">
             <svg
               width="24"
               height="24"
@@ -56,7 +56,6 @@ const HomePage: React.FC = () => {
               placeholder="Pencarian"
             />
           </div>
-
 
           {/* Icons Container */}
           <div className="px-4 py-2 flex gap-2">
@@ -117,63 +116,115 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Categories Section */}
-      <div className="categories flex justify-around gap-2.5 mt-4 bg-gray-100 rounded-md shadow-md overflow-x-scroll">
-        {categories.map((category: string) => (
-          <button
-            key={category}
-            className={`px-4 py-2 rounded-md text-xs flex items-center justify-center transition-all duration-200 ${
-              selectedCategory === category
-                ? 'bg-gradient-to-r from-[#83E69B] to-[#00BAE1] text-white shadow-md'
-                : 'bg-white text-gray-700'
-            }`}
-            onClick={() => handleCategoryClick(category)}
+      <div className="px-4">
+        {/* Categories Section */}
+        <div className="px-4 flex justify-around gap-2.5 mt-4 bg-white rounded-md overflow-x-scroll scrollbar-hide">
+          {categories.map((category: string) => (
+            <button
+              key={category}
+              className={`px-4 py-2 shadow-md border rounded-md text-xs flex items-center justify-center transition-all duration-200 ${
+                selectedCategory === category
+                  ? 'bg-gradient-to-r from-[#83E69B] to-[#00BAE1] text-white shadow-md'
+                  : 'bg-white text-[#08A9A8]'
+              }`}
+              onClick={() => handleCategoryClick(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+        {/* Product Grid */}
+        <div className="product-grid grid grid-cols-2 gap-y-4 py-4 justify-items-center">
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+        </div>
+
+        {/* Flash Sale Section */}
+        <div className='px-4'>
+        <section
+          className="px-8 py-4 rounded-lg shadow-md"
+          style={{
+            background: 'linear-gradient(180deg, #FFBC3B 0%, #FFF 104.24%)',
+          }}
+        >
+          <div className="flex justify-between items-center mb-1">
+            <h2 className="text-black font-nunito text-[13px] font-semibold leading-[18px] tracking-[-0.276px]">
+              Penawaran Hari Ini
+            </h2>
+            <Link href="/homepage/flashsale" legacyBehavior>
+              <a className="flex items-center gap-1 text-black font-nunito text-[13px] font-semibold leading-[18px] tracking-[-0.276px]">
+                <span>Lihat Semua</span>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.5858 5.99995L4.1109 3.5251L4.818 2.81799L8 5.99995L4.818 9.18195L4.1109 8.47485L6.5858 5.99995Z"
+                    fill="black"
+                  />
+                </svg>
+              </a>
+            </Link>
+          </div>
+
+          {/* Bagian hitung mundur */}
+          <div
+            className="px-2 py-2 bg-red-500 text-white rounded-md w-fit mb-2"
+            style={{
+              textAlign: 'center',
+              color: '#FFF',
+              fontSize: 10,
+              fontFamily: 'Nunito',
+              fontWeight: 700,
+              lineHeight: '12px',
+              wordWrap: 'break-word',
+            }}
           >
-            {category}
-          </button>
-        ))}
-      </div>
+            <span>11 Jam 15 Mnt 20 Dtk</span>
+          </div>
 
-      {/* Flash Sale Section */}
-      <section className="mt-6 bg-gray-100 rounded-md shadow-md p-4">
-        <div className="px-6 py-1 flex justify-between items-center mb-1">
-          <h2 className="text-black font-nunito text-[13px] font-semibold leading-[18px] tracking-[-0.276px]">
-            Penawaran Hari ini
-          </h2>
-
-          <Link href="/homepage/product-card" legacyBehavior>
-            <a className="flex items-center gap-1 text-black font-nunito text-[13px] font-semibold leading-[18px] tracking-[-0.276px]">
-              <span>Lihat Semua</span>
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6.5858 5.99995L4.1109 3.5251L4.818 2.81799L8 5.99995L4.818 9.18195L4.1109 8.47485L6.5858 5.99995Z"
-                  fill="black"
-                />
-              </svg>
-            </a>
-          </Link>
+          {/* Grid Produk Flashsale */}
+          <div className="product-grid grid grid-cols-2 gap-y-4 gap-x-3 mt-4 mx-auto justify-items-center">
+            <ProductFlashsale
+              imageUrl="/sepatu.jpg"
+              productName="Sneaker"
+              discount="40% - 60%"
+              price="Rp 120.000"
+            />
+            <ProductFlashsale
+              imageUrl="/baju.jpg"
+              productName="Kemeja "
+              discount="45% - 70%"
+              price="Rp 60.000"
+            />
+            <ProductFlashsale
+              imageUrl="/tshirt.jpg"
+              productName="T-Shirt"
+              discount="40% - 60%"
+              price="Rp 60.000"
+            />
+            <ProductFlashsale
+              imageUrl="/baju-anak.jpg"
+              productName="Baju Anak"
+              discount="30% - 50%"
+              price="Rp 80.000"
+            />
+          </div>
+        </section>
         </div>
 
-        <div className="product-grid grid grid-cols-2 gap-y-8 gap-x-5 mt-4 mx-auto justify-items-center">
-          <ProductFlashsale />
-          <ProductFlashsale />
-          <ProductFlashsale />
-          <ProductFlashsale />
+        {/* Product Grid */}
+        <div className="product-grid grid grid-cols-2 gap-y-4 py-4 justify-items-center">
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
         </div>
-      </section>
-
-      {/* Product Grid */}
-      <div className="product-grid grid grid-cols-2 gap-y-8 gap-x-5 px-4 py-4 mx-auto justify-items-center">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
       </div>
     </div>
   )

@@ -43,7 +43,7 @@ function NotificationPage() {
   return (
     <div className="bg-gray-50 min-h-screen p-4">
       {/* Wrapper untuk menambahkan layout yang lebih terpusat */}
-      <div className="notif max-w-[500px] mx-auto">
+      <div className="notif w-[400px] mx-auto">
         {/* List Notifikasi */}
         <ul className="mb-4">
           {notifications.map((notification, index) => (
